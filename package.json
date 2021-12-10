@@ -1,0 +1,11 @@
+{
+  "name": "storeapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Letton",
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn --cwd ./server dev"
+  },
+  "description": ""
+}
