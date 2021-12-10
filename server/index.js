@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser')
 const sequelize = require('./db.js')
 const router = require('./routes/index')
 const ErrorMiddleware = require('./middleware/ErrorMiddleware')
-const authMiddleware = require('./middleware/AuthMiddleware')
 
 const PORT = process.env.PORT || 5000
 
@@ -18,7 +17,6 @@ app.use(express.static('./uploads'))
 app.use(fileUpload({}))
 app.use(cookieParser())
 app.use('/api', router)
-app.use(authMiddleware)
 app.use(ErrorMiddleware)
 
 if (process.env.NODE_ENV === 'production') {
