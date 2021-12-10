@@ -5,7 +5,9 @@
   "author": "Letton",
   "license": "MIT",
   "scripts": {
-    "dev": "yarn --cwd ./server dev"
+    "server": "yarn --cwd ./server dev",
+    "client": "yarn --cwd ./client start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "description": ""
 }
