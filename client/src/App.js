@@ -3,25 +3,14 @@ import { BrowserRouter } from 'react-router-dom'
 import AppRouter from './components/AppRouter';
 import AuthContext from './context'
 import jwt from 'jsonwebtoken'
+import Cookies from 'js-cookie';
 
 const App = () => {
 
-  const parseCookie = str =>
-    str
-    .split(';')
-    .map(v => v.split('='))
-    .reduce((acc, v) => {
-      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
-      return acc;
-  }, {});
-
-  const [Auth, setAuth] = useState({...jwt.decode(parseCookie(document.cookie).token)});
+  const Auth = jwt.decode(Cookies.get('token'));
 
   return (
-    <AuthContext.Provider value={{
-      Auth,
-      setAuth
-    }}>
+    <AuthContext.Provider value={Auth}>
       <BrowserRouter>
         <AppRouter/>
       </BrowserRouter>
