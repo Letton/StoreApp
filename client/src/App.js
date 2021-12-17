@@ -7,10 +7,13 @@ import Cookies from 'js-cookie';
 
 const App = () => {
 
-  const Auth = jwt.decode(Cookies.get('token'));
+  const [Auth, setAuth] = useState(jwt.decode(Cookies.get('token')));
 
   return (
-    <AuthContext.Provider value={Auth}>
+    <AuthContext.Provider value={{
+      Auth,
+      setAuth
+    }}>
       <BrowserRouter>
         <AppRouter/>
       </BrowserRouter>

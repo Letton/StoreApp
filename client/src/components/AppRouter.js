@@ -7,7 +7,9 @@ import AuthContext from '../context'
 
 const AppRouter = () => {
     
-    const Auth = useContext(AuthContext)
+    const {Auth, setAuth} = useContext(AuthContext)
+
+    console.log(Auth);
 
     return (
         <Routes>
