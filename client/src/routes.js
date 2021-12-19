@@ -1,5 +1,5 @@
 import Index from './pages/Index'
-import Auth from './pages/Auth'
+import {SignIn, SignUp} from './pages/Auth'
 import Basket from './pages/Basket'
 import Device from './pages/Device'
 import Admin from './pages/Admin'
@@ -26,11 +26,11 @@ export const publicRoutes = [
     },
     {
         path: '/login',
-        Component: Auth
+        Component: SignIn
     },
     {
         path: '/register',
-        Component: Auth
+        Component: SignUp
     },
     {
         path: '/device/:id',

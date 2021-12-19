@@ -11,16 +11,15 @@ const App = () => {
   const [Auth, setAuth] = useState(jwt.decode(Cookies.get('token')));
 
   return (
-    <AuthContext.Provider value={{
-      Auth,
-      setAuth
-    }}>
-      <BrowserRouter>
-        <Header/>
-        <AppRouter/>
-      </BrowserRouter>
-    </AuthContext.Provider>
-
+      <AuthContext.Provider value={{
+        Auth,
+        setAuth
+      }}>
+        <BrowserRouter>
+          <Header/>
+          <AppRouter/>
+        </BrowserRouter>
+      </AuthContext.Provider>
   )
 }
 

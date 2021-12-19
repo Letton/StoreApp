@@ -1,10 +1,9 @@
 import React, {useContext} from 'react'
 import AuthContext from '../context'
-import { NavLink } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import { IconButton } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const NavBar = () => {
@@ -13,19 +12,33 @@ const NavBar = () => {
 
     return ( 
         <header>
-            <AppBar position="fixed" color="primary">
+            <AppBar position="static" color="primary">
               <Toolbar>
-                <Typography variant="h6">
+                <Typography variant="h6" sx={{ flexGrow: 1 }}>
                   StoreApp
                 </Typography>
-                <IconButton>
-                    <ShoppingCartOutlinedIcon>
+                {!Auth && 
+                  <Button color="inherit">Войти</Button>
+                }
+                {Auth && Auth.role !== 'ADMIN' &&
+                  <IconButton color="inherit">
+                      <ShoppingCartOutlinedIcon>
 
-                    </ShoppingCartOutlinedIcon>
-                </IconButton>
+                      </ShoppingCartOutlinedIcon>
+                  </IconButton>
+                }
+                {Auth && Auth.role === 'ADMIN' &&
+                  <>
+                    <Button color="inherit">Админ панель</Button>
+                    <IconButton color="inherit">
+                        <ShoppingCartOutlinedIcon>
+
+                        </ShoppingCartOutlinedIcon>
+                    </IconButton>
+                  </>
+                }
               </Toolbar>
             </AppBar>
-
         </header>
     );
 };
