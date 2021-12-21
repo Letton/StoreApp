@@ -8,12 +8,19 @@ const Index = () => {
     
     const [types, setTypes] = useState([])
 
+    const setActive = (id) => {
+        setTypes(types.map((type) => {
+            type.isActive = type.id === id ? 'contained' : 'outlined'
+            return type
+        }))
+    }
+
+
     useEffect(() => {
         async function fetchData() {
           const {data} = await api.get('/api/type');
           setTypes(data.data)
           setIsLoading(false)
-          console.log(123);
         }
         fetchData();
     }, []); 
@@ -45,11 +52,11 @@ const Index = () => {
                                     justifyContent: 'center'
                             }}>
                                 <ButtonGroup
-                                     orientation="vertical"
+                                    orientation="vertical"
                                     aria-label="vertical outlined button group"
                                 >
                                     {types.map((type) => 
-                                        <Button key={type.id}>{type.name}</Button>
+                                        <Button key={type.id} variant={type.isActive} onClick={() => setActive(type.id)}>{type.name}</Button>
                                     )}
                                 </ButtonGroup>
                             </Grid>
