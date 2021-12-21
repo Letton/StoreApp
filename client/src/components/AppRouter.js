@@ -9,8 +9,6 @@ const AppRouter = () => {
     
     const {Auth} = useContext(AuthContext)
 
-    console.log(Auth);
-
     return (
         <Routes>
             {Auth && Auth.role === 'ADMIN' && adminRoutes.map(({path, Component}) =>

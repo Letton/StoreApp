@@ -8,6 +8,8 @@
   "author": "Letton",
   "license": "MIT",
   "dependencies": {
+    "@chec/commerce.js": "^2.8.0",
+    "@types/chec__commerce.js": "^2.8.4",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

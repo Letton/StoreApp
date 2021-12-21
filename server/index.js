@@ -6,11 +6,15 @@ const cookieParser = require('cookie-parser')
 const sequelize = require('./db.js')
 const router = require('./routes/index')
 const ErrorMiddleware = require('./middleware/ErrorMiddleware')
-
+const cors = require('cors')
 const PORT = process.env.PORT || 5000
 
 const app = express()
 
+app.use(cors({
+    origin: process.env.CLIENT_DOMAIN_WITH_PORT,
+    credentials: true
+}))
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
 app.use(express.json())
 app.use(express.static('./uploads'))
@@ -18,6 +22,7 @@ app.use(fileUpload({}))
 app.use(cookieParser())
 app.use('/api', router)
 app.use(ErrorMiddleware)
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client', 'build')));
