@@ -1,9 +1,7 @@
 const { Type } = require('../models/index')
 const ApiError = require('../error/ApiError')
 const Commerce = require('@chec/commerce.js')
-
-
-
+const commerce = new Commerce(process.env.COMMERCE_PUBLIC_KEY);
 
 const TypeController = {
     async create(req, res) {
@@ -17,7 +15,6 @@ const TypeController = {
     },
 
     async getAll(req, res) {
-        const commerce = new Commerce(process.env.COMMERCE_PUBLIC_KEY);
         const types = await commerce.categories.list()
         return res.json(types)
     }

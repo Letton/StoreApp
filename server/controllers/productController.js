@@ -2,8 +2,10 @@ const { Device, DeviceInfo } = require('../models/index')
 const uuid = require('uuid')
 const path = require('path')
 const ApiError = require('../error/ApiError')
+const Commerce = require('@chec/commerce.js')
+const commerce = new Commerce(process.env.COMMERCE_PUBLIC_KEY);
 
-const BrandController = {
+const ProductController = {
     async create(req, res, next) {
         try {
             let {name, price, brandId, typeId, info} = req.body
@@ -25,25 +27,17 @@ const BrandController = {
         }
     },
 
-    async getAll(req, res) {
-        const {brandId, typeId, limit, page} = req.query
-        page = page || 1
-        limit = limit || 5
-        const offset = page * limit - limit
-        let devices
-        if (!brandId && !typeId) {
-            devices = await Device.findAll({limit, offset})
+    async getAll(req, res, next) {
+        
+        let {category_id, limit, page} = req.query
+        if (category_id) {
+            console.log(category_id);
+            const products = await commerce.products.list({
+                category_id: [category_id]
+            })
+            return res.json(products)
         }
-        if (brandId && !typeId) {
-            devices = await Device.findAll({where: {brandId}, limit, offset})
-        }
-        if (!brandId && typeId) {
-            devices = await Device.findAll({where: {typeId}, limit, offset})
-        }
-        if (brandId && typeId) {
-            devices = await Device.findAll({where: {typeId, brandId}, limit, offset})
-        }
-        return res.json(devices)
+        next(ApiError.badRequest("No type id"))
     },
 
     async getOne(req, res) {
@@ -58,4 +52,4 @@ const BrandController = {
     }
 }
 
-module.exports = BrandController
+module.exports = ProductController
