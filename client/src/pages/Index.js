@@ -1,6 +1,6 @@
-import { Container, Grid, Box, ButtonGroup, Button, CircularProgress } from '@mui/material';
+import { Container, Grid, Box, CircularProgress, List, ListSubheader, ListItemButton, ListItemText } from '@mui/material';
 import React, {useState, useEffect} from 'react';
-import api from '../api';
+import {api, authApi} from '../api';
 import ProductList from '../components/ProductList';
 
 const Index = () => {
@@ -12,10 +12,9 @@ const Index = () => {
 
     useEffect(() => {
         async function fetchData() {
-          const {data} = await api.get('/api/type');
+          const {data} = await authApi.get('/api/type');
           setTypes(data.data)
-          setSelectedType(data.data[0].id)
-          
+          setSelectedType('all')
           setIsLoading(false)
         }
         fetchData();
@@ -35,30 +34,33 @@ const Index = () => {
                 </Box> 
                 :
                 <Box sx={{
-                    paddingTop: '10px',
-                    paddingBottom: '10px'
+                    paddingTop: '15px',
                 }}>
                     <Container sx={{
                         display: 'flex',
                         justifyContent: 'center'
                     }}>
                         <Grid container>
-                            <Grid item xs={12} md={4} sx={{
-                                    display: 'flex',
-                                    justifyContent: 'center'
-                            }}>
-                                <ButtonGroup
-                                    orientation="vertical"
-                                    aria-label="vertical outlined button group"
-                                >
+                            <Grid item xs={12} md={2}>
+                                <List
+                                    sx={{ width: '100%', bgcolor: 'background.paper' }}
+                                    component="nav"
+                                    aria-labelledby="nested-list-subheader"
+                                    subheader=
+                                        {
+                                            <ListSubheader component="div" id="nested-list-subheader">
+                                                Категории
+                                            </ListSubheader>
+                                        }
+                                    >
                                     {types.map((type) => 
-                                        <Button key={type.id} variant={selectedType === type.id ? 'contained': 'outlined'} onClick={() => setSelectedType(type.id)}>{type.name}</Button>
+                                        <ListItemButton key={type.slug} selected={selectedType === type.slug ? true: false} onClick={() => setSelectedType(type.slug)}>
+                                            <ListItemText primary={type.name} />
+                                        </ListItemButton>
                                     )}
-                                </ButtonGroup>
+                                </List>
                             </Grid>
-                            <Grid item xs={12} md={8}>
-                                <ProductList selectedType={selectedType} />
-                            </Grid>
+                            <ProductList selectedType={selectedType} />
                         </Grid>
                     </Container>
                 </Box>

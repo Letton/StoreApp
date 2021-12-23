@@ -29,11 +29,10 @@ const ProductController = {
 
     async getAll(req, res, next) {
         
-        let {category_id, limit, page} = req.query
-        if (category_id) {
-            console.log(category_id);
+        let {category_slug, limit, page} = req.query
+        if (category_slug	) {
             const products = await commerce.products.list({
-                category_id: [category_id]
+                category_slug: [category_slug]
             })
             return res.json(products)
         }
