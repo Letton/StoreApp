@@ -9,5 +9,8 @@
     "client": "yarn --cwd ./client start",
     "dev": "concurrently \"yarn server\" \"yarn client\""
   },
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "concurrently": "^6.5.1"
+  }
 }
