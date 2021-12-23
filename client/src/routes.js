@@ -11,7 +11,6 @@ export const adminRoutes = [
     }
 ]
 
-
 export const authRoutes = [
     {
         path: '/basket',
