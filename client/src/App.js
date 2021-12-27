@@ -4,7 +4,6 @@ import AppRouter from './components/AppRouter';
 import AuthContext from './context'
 import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie';
-import Header from './components/Header';
 
 const App = () => {
 
@@ -16,7 +15,6 @@ const App = () => {
         setAuth
       }}>
         <BrowserRouter>
-          <Header/>
           <AppRouter/>
         </BrowserRouter>
       </AuthContext.Provider>

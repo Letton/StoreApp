@@ -1,7 +1,8 @@
 import Index from './pages/Index'
 import {SignIn, SignUp} from './pages/Auth'
 import Basket from './pages/Basket'
-import Device from './pages/Device'
+import Product from './pages/Product'
+import Products from './pages/Products'
 import Admin from './pages/Admin'
 
 export const adminRoutes = [
@@ -32,7 +33,11 @@ export const publicRoutes = [
         Component: SignUp
     },
     {
-        path: '/device/:id',
-        Component: Device
+        path: '/products',
+        Component: Products
+    },
+    {
+        path: '/product/:id',
+        Component: Product
     },
 ]

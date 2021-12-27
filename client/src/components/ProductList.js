@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { Grid, Box, Button, CircularProgress } from '@mui/material';
 import {api} from '../api';
 
 const ProductList = ({selectedType}) => {
@@ -28,37 +27,7 @@ const ProductList = ({selectedType}) => {
 
     return (
         <>
-            {isLoading
-                ?
-                <Grid item md={9} xs={12} sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    minHeight: '250px',
-                }}>
-                    <CircularProgress/>
-                </Grid> 
-                :
-                <Grid item spacing={2} md={10}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} md={4}>
-                            {products.map((product) => 
-                                <Button key={product.id}>{product.name}</Button>
-                            )}
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            {products.map((product) => 
-                                <Button key={product.id}>{product.name}</Button>
-                            )}
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            {products.map((product) => 
-                                <Button key={product.id}>{product.name}</Button>
-                            )}
-                        </Grid>
-                    </Grid>
-                </Grid>
-            }
+            
         </>
     );
 };
