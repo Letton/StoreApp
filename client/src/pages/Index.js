@@ -24,6 +24,11 @@ const Index = () => {
         <>
             <header id="header">
                 <NavBar/>
+                <div className="header-container">
+                    <div className="header-content">
+                        
+                    </div>
+                </div>
             </header>
             <main>
                 

@@ -46,6 +46,18 @@ img {
   height: auto;
 }
 
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 54px);
+}
+
+.header-content {
+  width: 992px;
+}
+
+
 @media screen and (max-width: 768px) {
 
 }
