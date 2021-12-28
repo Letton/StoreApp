@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const fileUpload = require('express-fileupload')
@@ -25,9 +26,9 @@ app.use(ErrorMiddleware)
 
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client', 'build')));
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
     app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+      res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
     });
   }
 
