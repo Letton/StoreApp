@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {api, authApi} from '../api';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/NavBar/NavBar'
 import ProductList from '../components/ProductList';
 
 const Index = () => {
@@ -22,7 +22,7 @@ const Index = () => {
 
     return (
         <>
-            <header className="header" id="header">
+            <header id="header">
                 <NavBar/>
             </header>
             <main>
