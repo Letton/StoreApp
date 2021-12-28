@@ -61,7 +61,7 @@ img {
 }
 
 .header-block {
-  width: 50%;
+  flex-grow: 1;
 }
 
 
