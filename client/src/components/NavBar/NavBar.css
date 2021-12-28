@@ -48,6 +48,7 @@ nav {
 
     .nav-menu {
       position: fixed;
+      background: #fff;
       top: 54px;
       left: -100%;
       width: 100%;

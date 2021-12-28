@@ -27,7 +27,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  color: var(--accent-color);
+  color: var(--text-color);
   font-weight: 600;
 }
 
@@ -46,15 +46,22 @@ img {
   height: auto;
 }
 
-.header-container {
+.header-wrapper {
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   height: calc(100vh - 54px);
 }
 
-.header-content {
-  width: 992px;
+.header-container {
+  max-width: 768px;
+  width: 768px;
+  display: flex;
+}
+
+.header-block {
+  width: 50%;
 }
 
 
