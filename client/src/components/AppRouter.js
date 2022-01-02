@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { adminRoutes, authRoutes, publicRoutes } from '../routes'
 import {Routes, Route} from 'react-router-dom'
-import NotFound from '../pages/NotFound'
+import NotFound from '../pages/Error/NotFound'
 import AuthContext from '../context'
 
 

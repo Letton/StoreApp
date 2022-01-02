@@ -1,9 +1,9 @@
-import Index from './pages/Index'
-import {SignIn, SignUp} from './pages/Auth'
-import Basket from './pages/Basket'
-import Product from './pages/Product'
-import Products from './pages/Products'
-import Admin from './pages/Admin'
+import Index from './pages/Index/Index'
+import {SignIn, SignUp} from './pages/Auth/Auth'
+import Basket from './pages/Basket/Basket'
+import Product from './pages/Product/Product'
+import Products from './pages/Products/Products'
+import Admin from './pages/Admin/Admin'
 
 export const adminRoutes = [
     {
