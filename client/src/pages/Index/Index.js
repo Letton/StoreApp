@@ -51,7 +51,7 @@ const Index = () => {
                     </div>
                     <div className="scrool-block">
                         <span className="scroll-btn">
-                            <a href="#main">
+                            <a onClick={ () => window.scrollBy(0, window.innerHeight) }>
                                 <span className="mouse">
                                     <span>
                                     </span>
@@ -61,8 +61,24 @@ const Index = () => {
                     </div>
                 </div>
             </header>
-            <main id='main'>
-                123
+            <main id="main">
+                <div className="category-wrapper">
+                    <div className="category-header">
+                        <h2>Категории</h2>
+                    </div>
+                    <div className="category-content">
+                        <div className="category-row">
+                            <div className="block"></div>
+                            <div className="block"></div>
+                            <div className="block"></div>
+                        </div>
+                        <div className="category-row">
+                            <div className="block"></div>
+                            <div className="block"></div>
+                            <div className="block"></div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </>
     );

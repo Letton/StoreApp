@@ -12,7 +12,6 @@ const NavBar = () => {
 
 
     return (
-
         <nav>
             <div className="nav-container">
                 <div className="nav-logo">
