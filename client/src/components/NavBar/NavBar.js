@@ -2,12 +2,12 @@ import { React, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css'
 
-const NavBar = () => {
+const NavBar = (props) => {
 
-    const [toggleState, setToggleState] = useState('')
+    const {menuState, setMenuState} = props
 
     const mobileMenuHandler = (state) => {
-        setToggleState(state === 'active'? '' : 'active')
+        setMenuState(state === 'active'? '' : 'active')
     }
 
 
@@ -18,9 +18,9 @@ const NavBar = () => {
                     <Link to='/'>StoreApp</Link>
                 </div>
                 <div className="nav-block">
-                    <ul className={`nav-menu ${toggleState}`}>
+                    <ul className={`nav-menu ${menuState}`}>
                         <li className="nav-item">
-                            <Link to='/shop'>Товары</Link>
+                            <Link to='/products'>Товары</Link>
                         </li>
                         <li className="nav-item">
                             <Link to='/shop'>О магазине</Link>
@@ -34,7 +34,7 @@ const NavBar = () => {
                             <i className="uil uil-shopping-bag"/>
                         </Link>
                     </div>
-                    <div id="nav-toggle" onClick={() => mobileMenuHandler(toggleState)}>
+                    <div id="nav-toggle" onClick={() => mobileMenuHandler(menuState)}>
                         <i className="uil uil-apps"></i>
                     </div>
                 </div>

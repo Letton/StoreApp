@@ -91,7 +91,7 @@ nav {
         height: calc(100vh - 56px);
         display: flex;
         flex-direction: column;
-        
+        overflow: hidden;
       }
 
     .nav-item {

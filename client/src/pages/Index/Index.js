@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {api, authApi} from '../../api';
 import NavBar from '../../components/NavBar/NavBar'
 import ProductList from '../../components/ProductList';
@@ -8,8 +8,12 @@ import './Index.css'
 
 const Index = () => {
 
+    let navigate = useNavigate()
+
     const [isLoading, setIsLoading] = useState(true)
-    
+
+    const [menuState, setMenuState] = useState('')
+
     const [types, setTypes] = useState([])
     const [selectedType, setSelectedType] = useState(undefined)
 
@@ -24,15 +28,15 @@ const Index = () => {
     }, []); 
 
     return (
-        <>
+        <div className={menuState === 'active' ? 'no-scroll' : ''}>
             <header id="header">
-                <NavBar/>
+                <NavBar menuState={menuState} setMenuState={setMenuState}/>
                 <div className="header-wrapper">
                     <div className="header-container">
                         <div className="header-block">
                             <h1>Some text</h1>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod obcaecati veniam est aspernatur totam provident praesentium amet neque a dolores voluptatibus architecto nam harum reprehenderit error voluptate corporis, corrupti dolor!</p>
-                            <Link to='/shop'>
+                            <Link to='/products'>
                                 Посмотреть товары 
                             </Link>
                         </div>
@@ -68,19 +72,32 @@ const Index = () => {
                     </div>
                     <div className="category-content">
                         <div className="category-row">
-                            <div className="block"></div>
-                            <div className="block"></div>
-                            <div className="block"></div>
+                            <div className="category-block" onClick={ () => navigate('/products?category=pods')}>
+                                <img src="/img/test.svg" alt="Под" />
+                                <h3>Поды</h3>
+                            </div>
+                            <div className="category-block">
+                                <h3>Жидкости</h3>
+                            </div>
+                            <div className="category-block">
+                                <h3>Расходники</h3>
+                            </div>
                         </div>
                         <div className="category-row">
-                            <div className="block"></div>
-                            <div className="block"></div>
-                            <div className="block"></div>
+                            <div className="category-block">
+                                <h3>Одноразовые поды</h3>
+                            </div>
+                            <div className="category-block">
+                                <h3>Зарубежные жидкости</h3>
+                            </div>
+                            <div className="category-block">
+                                <h3>Новинки</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
             </main>
-        </>
+        </div>
     );
 };
 

@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 8px;
 }
   
 
@@ -23,6 +23,7 @@
 
 ::-webkit-scrollbar-thumb {
 	background: var(--accent-color);
+  border-radius: 2rem;
 }
 
 
